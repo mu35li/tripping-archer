@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Welcome{% endblock %}
+{%block header%}
+<h1>Trippin Archer <small>
+    <strong>H</strong>ome 
+    <strong>M</strong>anagement 
+    <strong>S</strong>ystem
+    </small>
+</h1>
+{%endblock%}
+{% block body %}
+<h1>Welcome</h1>
+<a href="{{ url_for('fridge') }}">Fridge</a>
+{% endblock %}

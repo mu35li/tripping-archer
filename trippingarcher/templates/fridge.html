@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Fridge{% endblock %}
+{%block header%}
+<h1>Tripping Archer <small>
+    <strong>H</strong>ome 
+    <strong>M</strong>anagement 
+    <strong>S</strong>ystem
+    </small>
+</h1>
+{%endblock%}
+{% block body %}
+<h1>Fridge</h1>
+<div class="table-responsive">
+<table class="table table-bordered">
+    <tr>
+        <th>Item</th>
+        <th>Count</th>
+        <th>Actions</th>
+    </tr>
+    
+{%for item in items%}
+    <tr>
+        <td> {{item.name}} </td>
+        <td {%if item.fridgeCount <= item.rebuyPoint %} class="danger" {% endif %}> {{item.fridgeCount}} </td>
+        <td><span class="btn btn-warning glyphicon glyphicon-pencil"></span> <span class="btn btn-danger glyphicon glyphicon-trash"></span>
+            <span class="btn btn-primary glyphicon glyphicon-share-alt"></span></td>
+    </tr>
+{%endfor%}
+</table>
+</div>
+{% endblock %}
