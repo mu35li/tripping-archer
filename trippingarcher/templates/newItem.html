@@ -1,0 +1,23 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "layout.html" %}
+{% block title %}New Item{% endblock %}
+{%block header%}
+<h1>Tripping Archer <small>
+    <strong>H</strong>ome 
+    <strong>M</strong>anagement 
+    <strong>S</strong>ystem
+    </small>
+</h1>
+{%endblock%}
+{% block body %}
+<h2>New Item</h2>
+
+<form method=post action="{{ url_for('newItem')}}">
+  <dl>
+    {{ render_field(form.name) }}
+    {{ render_field(form.fridgeCount) }}
+    {{ render_field(form.rebuyPoint) }}
+  </dl>
+  <p><input type=submit value=New>
+</form>
+{% endblock %}

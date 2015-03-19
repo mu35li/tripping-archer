@@ -2,9 +2,12 @@
 from flask import Flask, request, session, redirect, url_for, \
      abort, render_template, flash
 
+from wtforms import Form, BooleanField, TextField, PasswordField, DecimalField, validators
+
 from flask.ext.sqlalchemy import SQLAlchemy
 # configuration
 DATABASE = '/tmp/trippingarcher.db'
+SECRET_KEY = 'hahaha'
 
 # create our little application :)
 app = Flask(__name__)
@@ -54,5 +57,10 @@ class ShoppingList(db.Model):
 
     def __repr__(self):
         return '<ShoppingList %r>' % self.name
+
+class NewItemForm(Form):
+    name = TextField('Name')
+    fridgeCount = DecimalField('In fridge')
+    rebuyPoint = DecimalField('When to rebuy')
 
 import trippingarcher.views
