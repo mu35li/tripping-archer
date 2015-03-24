@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 # @app.teardown_appcontext
 # def shutdown_session(exception=None):
 #     db_session.remove()
-from trippingarcher.database import db_session
+# from trippingarcher.database import db_session
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
@@ -60,6 +60,11 @@ class ShoppingList(db.Model):
 
 class NewItemForm(Form):
     name = TextField('Name')
+    fridgeCount = DecimalField('In fridge')
+    rebuyPoint = DecimalField('When to rebuy')
+
+class EditItemForm(Form):
+    name =  TextField('Name')
     fridgeCount = DecimalField('In fridge')
     rebuyPoint = DecimalField('When to rebuy')
 

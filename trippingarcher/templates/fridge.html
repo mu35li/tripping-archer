@@ -22,8 +22,11 @@
     <tr>
         <td> {{item.name}} </td>
         <td {%if item.fridgeCount <= item.rebuyPoint %} class="danger" {% endif %}> {{item.fridgeCount}} </td>
-        <td><span class="btn btn-warning glyphicon glyphicon-pencil"></span> <span class="btn btn-danger glyphicon glyphicon-trash"></span>
-            <span class="btn btn-primary glyphicon glyphicon-share-alt"></span></td>
+        <td>
+            <a href="{{ url_for('editItem', itemId=item.id)}}"><span class="btn btn-warning glyphicon glyphicon-pencil"></span></a>
+            <a href="{{ url_for('deleteItem', itemId=item.id)}}"><span class="btn btn-danger glyphicon glyphicon-trash"></span></a>
+            <a href=""><span class="btn btn-primary glyphicon glyphicon-share-alt"></span></a>
+        </td>
     </tr>
 {%endfor%}
 </table>

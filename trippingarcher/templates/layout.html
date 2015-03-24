@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,19 +19,29 @@
     <![endif]-->
   </head>
   <body>
-    <div class="page-header">
+    <div class="page-header titel">
       <div class="container">
         {%block header%}{%endblock%}
       </div>
     </div>
-    <div class="container">
+    <div class="container page-content">
     {% block body %}
     {% endblock %}
+    <div class="footer">
+      {% block footer %}
+      {% endblock %}
     </div>
+    </div>
+
+    {% block modals %}
+    {% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    {% block scripts %}
+    {% endblock %}
+
   </body>
 </html>
