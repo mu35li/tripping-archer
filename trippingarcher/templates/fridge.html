@@ -10,26 +10,23 @@
 {%endblock%}
 {% block body %}
 <h1>Fridge</h1>
-<div class="table-responsive">
-<table class="table table-bordered">
-    <tr>
-        <th>Item</th>
-        <th>Count</th>
-        <th>Actions</th>
-    </tr>
-    
+   
 {%for item in items%}
-    <tr>
-        <td> {{item.name}} </td>
-        <td {%if item.fridgeCount <= item.rebuyPoint %} class="danger" {% endif %}> {{item.fridgeCount}} </td>
-        <td>
-            <a href="{{ url_for('editItem', itemId=item.id)}}"><span class="btn btn-warning glyphicon glyphicon-pencil"></span></a>
-            <a href="{{ url_for('deleteItem', itemId=item.id)}}"><span class="btn btn-danger glyphicon glyphicon-trash"></span></a>
-            <a href=""><span class="btn btn-primary glyphicon glyphicon-share-alt"></span></a>
-        </td>
-    </tr>
-{%endfor%}
-</table>
+<div class="bs-callout {{'bs-callout-danger' if item.fridgeCount <= item.rebuyPoint else ''}}">
+        <span class="">{{item.name}}</span>
+        <div class="buttons pull-right">
+            <a href="{{ url_for('editItem', itemId=item.id)}}">
+                <span class="btn btn-warning glyphicon glyphicon-pencil editButton"></span>
+            </a>
+            <a href="{{ url_for('deleteItem', itemId=item.id)}}">
+                <span class="btn btn-danger glyphicon glyphicon-trash deleteButton"></span>
+            </a>
+            <a href="">
+                <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton"></span>
+            </a>
+        </div>
+        <div class="clearfix"></div>
 </div>
+{%endfor%}
 <a href="{{ url_for('newItem') }}" class="btn btn-success glyphicon glyphicon-plus"></a>
 {% endblock %}
