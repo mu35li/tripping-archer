@@ -16,13 +16,13 @@
         <span class="">{{item.name}}</span>
         <div class="buttons pull-right">
             <a href="{{ url_for('editItem', itemId=item.id)}}">
-                <span class="btn btn-warning glyphicon glyphicon-pencil editButton"></span>
+                <span class="btn btn-warning glyphicon glyphicon-pencil editButton actionButton"></span>
             </a>
             <a href="{{ url_for('deleteItem', itemId=item.id)}}">
-                <span class="btn btn-danger glyphicon glyphicon-trash deleteButton"></span>
+                <span class="btn btn-danger glyphicon glyphicon-trash deleteButton actionButton"></span>
             </a>
             <a href="">
-                <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton"></span>
+                <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton actionButton"></span>
             </a>
         </div>
         <div class="clearfix"></div>

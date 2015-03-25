@@ -1,22 +1,24 @@
 body {
     background: url('../img/restaurant_icons.png');
 }
-
-.page-content {
-    background-color: #fdfdfd;
-    -webkit-box-shadow: 0px 0px 200px 0px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0px 0px 200px 0px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 200px 0px rgba(0,0,0,0.6);
-    padding-bottom: 250px;
-    position: relative;
-}
-
 .titel {
     color: #FFF;
     background: url('../img/footer_lodyas.png');
     margin: 0 !important;
     padding-top: 40px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border: none !important;
+    z-index: 1000 !important;
 }
+
+.page-content {
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    padding-bottom: 250px;
+    position: relative;
+}
+
+
 
 .footer {
     position: absolute;
@@ -28,7 +30,8 @@ body {
     margin: 20px 0;
     border: 1px solid #eee;
     border-left-width: 5px;
-    border-radius: 3px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .bs-callout h4 {
     margin-top: 0;
@@ -80,29 +83,25 @@ body {
     color: #5bc0de;
 }
 
-
-.editButton {
+.btn {
+    border-radius: 2px !important;
+}
+.actionButton {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transform: translate3d(0, 50%, 0);
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
     opacity: 0;
-    transition: opacity 0.3s, -webkit-opacity 0.3s, -moz-opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s, -webkit-opacity 0.3s, -moz-opacity 0.3s, transform 0.2s;
+}
+.editButton {
+    transition-delay: 0s;
 }
 
 .deleteButton {
-    transform: translate3d(0, 50%, 0);
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    opacity: 0;
-    transition: opacity 0.3s, -webkit-opacity 0.3s, -moz-opacity 0.3s, transform 0.5s;
+    transition-delay: 0.1s;
 }
 
 .forwardButton {
-    transform: translate3d(0, 50%, 0);
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    opacity: 0;
-    transition: opacity 0.3s, -webkit-opacity 0.3s, -moz-opacity 0.3s, transform 0.7s;
+    transition-delay: 0.2s;
 }
 
 .bs-callout:hover .editButton {
@@ -132,3 +131,19 @@ body {
 .buttons a:hover {
     text-decoration: none;
 }
+
+/*
+    Boxshadow for material design
+
+    Level       shadow
+    1           
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    2           
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    3           
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    4           
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    5           
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+*/
