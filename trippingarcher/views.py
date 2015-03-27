@@ -9,7 +9,7 @@ def index():
 
 @app.route("/fridge")
 def fridge():
-    return render_template('fridge.html', items=Item.query.filter(Item.fridgeCount > 0).all())
+    return render_template('fridge.html', items=Item.query.filter(Item.deleted == 0).all())
 
 @app.route("/fridge/new", methods=['GET', 'POST'])
 def newItem():
@@ -17,20 +17,20 @@ def newItem():
     if request.method == 'POST' and form.validate():
         existingItem = Item.query.filter(Item.name == form.name.data).first()
         if existingItem is None:
-            item = Item(form.name.data, form.fridgeCount.data, form.rebuyPoint.data)
+            item = Item(form.name.data, form.fridgeCount.data, form.rebuyPoint.data, 0)
             db.session.add(item)
         else:
             existingItem.fridgeCount = form.fridgeCount.data
         flash('Processing')
         db.session.commit()
         return redirect(url_for('fridge'))
-    return render_template('newItem.html', form=form, items=Item.query.filter(Item.fridgeCount == 0).all())
+    return render_template('newItem.html', form=form, items=Item.query.filter(Item.deleted == 1).all())
 
 @app.route("/fridge/delete", methods=['GET'])
 def deleteItem():
     itemId = request.args.get('itemId', '')
     item = Item.query.get(itemId)
-    item.fridgeCount = 0
+    item.deleted = 1
     db.session.commit()
     return redirect(url_for('fridge'))
 
@@ -42,6 +42,7 @@ def updateItem():
         itemId = request.args.get('itemId', '')
         item = Item.query.get(itemId)
         item.fridgeCount = request.args.get('count', '')
+        item.deleted = 0
         db.session.commit()
         return redirect(url_for('fridge'))
 

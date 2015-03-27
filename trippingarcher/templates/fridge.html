@@ -10,23 +10,62 @@
 {%endblock%}
 {% block body %}
 <h1>Fridge</h1>
-   
+{% set count = 1 %}   
 {%for item in items%}
-<div class="bs-callout {{'bs-callout-danger' if item.fridgeCount <= item.rebuyPoint else ''}}">
+<!-- count modulo 2 = {{count % 2}} -->
+{%if count % 2 == 1%}
+<div class="row">
+    <div class="col-md-6">
+        <div class="zheight-1 bs-callout {{'bs-callout-danger' if item.fridgeCount <= item.rebuyPoint else ''}}">
         <span class="">{{item.name}}</span>
+        <span class="badge">{{"%g"|format(item.fridgeCount)}}</span>
+        <!-- <div class="progress">
+            <div class="progress-bar progress-bar-{{'primary' if item.fridgeCount > item.rebuyPoint else 'danger'}}" style="width: 
+                {{ (item.rebuyPoint//item.fridgeCount)*10 if item.fridgeCount > 0 and item.rebuyPoint > 0 else (item.fridgeCount // 0.1)*10}}
+                %"></div>
+        </div> -->
         <div class="buttons pull-right">
             <a href="{{ url_for('editItem', itemId=item.id)}}">
-                <span class="btn btn-warning glyphicon glyphicon-pencil editButton actionButton"></span>
+                <span class="btn btn-warning glyphicon glyphicon-pencil editButton actionButton zheight-1"></span>
             </a>
             <a href="{{ url_for('deleteItem', itemId=item.id)}}">
-                <span class="btn btn-danger glyphicon glyphicon-trash deleteButton actionButton"></span>
+                <span class="btn btn-danger glyphicon glyphicon-trash deleteButton actionButton zheight-1"></span>
             </a>
             <a href="">
-                <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton actionButton"></span>
+                <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton actionButton zheight-1"></span>
             </a>
         </div>
         <div class="clearfix"></div>
 </div>
+</div>
+<!-- {{count}} -->
+{%else%}
+<div class="col-md-6">
+  <div class="zheight-1 bs-callout {{'bs-callout-danger' if item.fridgeCount <= item.rebuyPoint else ''}}">
+        <span class="">{{item.name}}</span>
+        <span class="badge">{{"%g"|format(item.fridgeCount)}}</span>
+        <div class="buttons pull-right">
+            <a href="{{ url_for('editItem', itemId=item.id)}}">
+                <span class="btn btn-warning glyphicon glyphicon-pencil editButton actionButton zheight-1"></span>
+            </a>
+            <a href="{{ url_for('deleteItem', itemId=item.id)}}">
+                <span class="btn btn-danger glyphicon glyphicon-trash deleteButton actionButton zheight-1"></span>
+            </a>
+            <a href="">
+                <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton actionButton zheight-1"></span>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+</div>  
+</div>
+</div>
+<!-- {{count}} -->
+{%endif%}
+{% set count = count + 1 %}
 {%endfor%}
+{%if count % 2 == 0 %}
+</div>
+<!-- ungerade -->
+{%endif%}
 <a href="{{ url_for('newItem') }}" class="btn btn-success glyphicon glyphicon-plus"></a>
 {% endblock %}

@@ -22,10 +22,10 @@
 </form>
 <h3>Items currently not in the Fridge:</h3>
 {% for item in items%}
-<div class="bs-callout bs-callout-info">
+<div class="bs-callout bs-callout-info zheight-2">
   <span>{{item.name}}</span>
   <div class="buttons pull-right">
-    <button class="btn btn-primary glyphicon glyphicon-plus addItem editButton" value="{{item.id}}" data-toggle="modal" data-target="#readdItem"></button>
+    <button class="btn btn-primary glyphicon glyphicon-plus addItem editButton actionButton" value="{{item.id}}" data-toggle="modal" data-target="#readdItem"></button>
   </div>
   <div class="clearfix"></div>
 </div>

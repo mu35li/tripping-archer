@@ -34,11 +34,13 @@ class Item(db.Model):
     name = db.Column(db.String(80), unique=True)
     fridgeCount = db.Column(db.Float)
     rebuyPoint = db.Column(db.Float)
+    deleted = db.Column(db.Integer)
 
-    def __init__(self, name, fridgeCount, rebuyPoint):
+    def __init__(self, name, fridgeCount, rebuyPoint, deleted):
         self.name = name
         self.fridgeCount = fridgeCount
         self.rebuyPoint = rebuyPoint
+        self.deleted = deleted
 
     def __repr__(self):
         return '<Item %r>' % self.name
