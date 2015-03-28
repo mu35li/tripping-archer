@@ -10,20 +10,14 @@
 {%endblock%}
 {% block body %}
 <h1>Fridge</h1>
-{% set count = 1 %}   
+{% set count = [] %}   
 {%for item in items%}
-<!-- count modulo 2 = {{count % 2}} -->
-{%if count % 2 == 1%}
+{%if count|length % 2 == 0 %}
 <div class="row">
     <div class="col-md-6">
         <div class="zheight-1 bs-callout {{'bs-callout-danger' if item.fridgeCount <= item.rebuyPoint else ''}}">
         <span class="">{{item.name}}</span>
         <span class="badge">{{"%g"|format(item.fridgeCount)}}</span>
-        <!-- <div class="progress">
-            <div class="progress-bar progress-bar-{{'primary' if item.fridgeCount > item.rebuyPoint else 'danger'}}" style="width: 
-                {{ (item.rebuyPoint//item.fridgeCount)*10 if item.fridgeCount > 0 and item.rebuyPoint > 0 else (item.fridgeCount // 0.1)*10}}
-                %"></div>
-        </div> -->
         <div class="buttons pull-right">
             <a href="{{ url_for('editItem', itemId=item.id)}}">
                 <span class="btn btn-warning glyphicon glyphicon-pencil editButton actionButton zheight-1"></span>
@@ -31,19 +25,19 @@
             <a href="{{ url_for('deleteItem', itemId=item.id)}}">
                 <span class="btn btn-danger glyphicon glyphicon-trash deleteButton actionButton zheight-1"></span>
             </a>
-            <a href="">
+<!--             <a href="">
                 <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton actionButton zheight-1"></span>
             </a>
-        </div>
+ -->        </div>
         <div class="clearfix"></div>
 </div>
 </div>
-<!-- {{count}} -->
+{% if count.append(1) %}{% endif %}
 {%else%}
 <div class="col-md-6">
   <div class="zheight-1 bs-callout {{'bs-callout-danger' if item.fridgeCount <= item.rebuyPoint else ''}}">
         <span class="">{{item.name}}</span>
-        <span class="badge">{{"%g"|format(item.fridgeCount)}}</span>
+        <span class="badge" style="margin: 0 auto">{{"%g"|format(item.fridgeCount)}}</span>
         <div class="buttons pull-right">
             <a href="{{ url_for('editItem', itemId=item.id)}}">
                 <span class="btn btn-warning glyphicon glyphicon-pencil editButton actionButton zheight-1"></span>
@@ -51,19 +45,18 @@
             <a href="{{ url_for('deleteItem', itemId=item.id)}}">
                 <span class="btn btn-danger glyphicon glyphicon-trash deleteButton actionButton zheight-1"></span>
             </a>
-            <a href="">
+<!--             <a href="">
                 <span class="btn btn-primary glyphicon glyphicon-share-alt forwardButton actionButton zheight-1"></span>
             </a>
-        </div>
+ -->        </div>
         <div class="clearfix"></div>
 </div>  
 </div>
 </div>
-<!-- {{count}} -->
+{% if count.append(1) %}{% endif %}
 {%endif%}
-{% set count = count + 1 %}
 {%endfor%}
-{%if count % 2 == 0 %}
+{%if count|length % 2 == 1 %}
 </div>
 <!-- ungerade -->
 {%endif%}
