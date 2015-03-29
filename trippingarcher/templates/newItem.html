@@ -20,7 +20,8 @@
   </dl>
   <p><button class="btn btn-success glyphicon glyphicon-check" type=submit value=New > </button>
 </form>
-<h3>Items currently not in the Fridge:</h3>
+{% if items %}
+<h3>Disabled Items</h3>
 {% for item in items%}
 <div class="bs-callout bs-callout-info zheight-2">
   <span>{{item.name}}</span>
@@ -30,7 +31,7 @@
   <div class="clearfix"></div>
 </div>
 {% endfor%}
-
+{%endif%}
 {% endblock %}
 
 {% block footer%}
